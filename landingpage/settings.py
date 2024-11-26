@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-yoxu&yk92ku%a5e(tr)fa5%xmysdiz^#!4eghp51ftlrf2%&r4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['luartech.cl', 'www.luartech.cl']
+CSRF_TRUSTED_ORIGINS = ['https://luartech.cl.cl', 'https://www.luartech.cl.cl']
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
