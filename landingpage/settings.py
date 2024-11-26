@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-yoxu&yk92ku%a5e(tr)fa5%xmysdiz^#!4eghp51ftlrf2%&r4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['landingpageluartech-085b8dc80094.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
@@ -116,7 +116,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-
+import django_heroku
+import dj_database_url
+django_heroku.settings(locals())
 
 
 import os
