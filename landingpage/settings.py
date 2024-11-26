@@ -27,6 +27,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['landingpageluartech-085b8dc80094.herokuapp.com', 'localhost', '127.0.0.1']
 
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # Application definition
 
@@ -125,6 +126,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "app", "static"),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Default primary key field type
@@ -134,4 +136,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import os
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
