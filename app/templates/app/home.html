@@ -1,0 +1,638 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="themeSection" class="h-screen bg-black flex flex-col justify-center items-center text-white">
+    <button id="toggleTheme"
+        class="fixed top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-md hover:bg-gray-700 transition">
+        <i id="themeIcon" class="fas fa-sun"></i> <!-- Icono de Sol por defecto -->
+    </button>
+
+
+    <!-- Logo -->
+    {% load static %}
+    <img id="themeLogo" src="{% static 'img/logo.png' %}" alt="LuarTech Logo" class="w-32 h-auto mb-10">
+
+
+    <!-- Título -->
+    <h1 class="text-5xl font-bold text-center md:text-6xl lg:text-7xl">
+        Bienvenido a
+        <span class="text-[#5cf446]">Lu<span class="text-[#60dcde]">art</span><span id="themeech"
+                class="text-white">ech</span></span>
+
+        Innova
+    </h1>
+
+
+
+    <p class="mt-4 text-lg">Innovación y tecnología a tu alcance</p>
+    <a href="#proyectos" class="mt-6 bg-white text-black py-2 px-4 rounded-lg hover:bg-gray-100">Ver Proyectos</a>
+</section>
+
+<div id="proyectos">
+
+    <!-- Proyectos Section -->
+    <section class="min-h-screen bg-gray-900 text-white p-10 " id="proyectosSection">
+        <h2 class=" text-3xl font-bold text-center " id="proyectospalabra">Proyectos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+            <!-- Proyecto 1 -->
+
+            <div class="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl">
+                <!-- Video del proyecto -->
+                <video src="{% static 'videos/proyecto1_demo.mp4' %}" controls autoplay loop muted
+                    class="w-full h-56 object-cover rounded-lg">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+                <br>
+                <img src="{% static 'img/smartagro-responsive.jpg' %}" alt="Vista del proyecto en formato móvil"
+                    class="w-32 h-auto object-cover rounded-lg mx-auto">
+                <h3 class="text-xl font-semibold mt-4">SmartAgro-IoT</h3>
+                <p class="mt-2">Software de Gestión y Monitoreo Agrícola.</p>
+
+                <!-- Enlace para desplegar más información -->
+                <a href="javascript:void(0);" onclick="toggleDetails()" id="toggleLink"
+                    class="mt-4 block text-blue-400 hover:underline transition-all duration-300">Ver más</a>
+
+                <!-- Contenido adicional oculto -->
+                <div id="projectDetails"
+                    class="hidden mt-4 text-white overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
+
+                    <p>Smart Agro IoT es un software de gestión y monitoreo agrícola diseñado para agricultores y
+                        administradores del campo. Las principales funcionalidades son:</p>
+                    <ul class="list-disc pl-5">
+                        <li>Control de Sectores por geolocalización</li>
+                        <li>Gestión de Jornadas</li>
+                        <li>Control de Insumos y Maquinarias</li>
+                        <li>Gestor de Personal y Contratos</li>
+                        <li>Gestión Financiera Agrícola</li>
+                        <li>Monitoreo en Tiempo Real de Variables Climáticas de las Plantas (aire y suelo)</li>
+                        <li>Desarrollado y alojado en la nube para un acceso rápido, fiable y sin complicaciones.</li>
+                        <p>Sensores:</p>
+                        <ul class="list-disc pl-5">
+                            <li>Desarrollo y Prototipado de Avanzados Sensores</li>
+                            <li>Sensores funcionales como dispositivos de telemetría</li>
+
+                        </ul>
+
+
+                    </ul>
+
+                </div>
+            </div>
+
+            <!-- Script para alternar la visibilidad del contenido -->
+            <script>
+                function toggleDetails() {
+                    var details = document.getElementById('projectDetails');
+                    var toggleLink = document.getElementById('toggleLink');
+
+                    if (details.classList.contains('hidden')) {
+                        // Mostrar detalles con efecto de desvanecimiento y ampliación
+                        details.classList.remove('hidden');
+                        details.classList.add('block');
+                        details.classList.remove('opacity-0', 'max-h-0');
+                        details.classList.add('opacity-100', 'max-h-screen');
+
+                        // Cambiar texto del enlace
+                        toggleLink.textContent = 'Ver menos';
+                    } else {
+                        // Ocultar detalles con efecto de reducción y desvanecimiento suave
+                        details.classList.remove('opacity-100', 'max-h-screen');
+                        details.classList.add('opacity-0', 'max-h-0');
+
+                        // Cambiar texto del enlace
+                        toggleLink.textContent = 'Ver más';
+
+                        // Retirar la clase 'block' para ocultar completamente el contenido después de la animación
+                        setTimeout(function () {
+                            details.classList.remove('block');
+                            details.classList.add('hidden');
+                        }, 500); // La transición de desvanecimiento dura 500ms
+                    }
+                }
+            </script>
+
+
+
+
+
+            <!-- Proyecto 2 -->
+            <div class="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl">
+                <!-- Video principal del proyecto -->
+                <video src="{% static 'videos/proyecto-carwash.mp4' %}" controls autoplay loop muted
+                    class="w-full h-56 object-cover rounded-lg mb-4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+                <br>
+                <!-- Imagen adicional para formato celular -->
+                <img src="{% static 'img/car-wash-responsive.jpg' %}" alt="Vista del proyecto en formato móvil"
+                    class="w-32 h-auto object-cover rounded-lg mx-auto">
+                <h3 class="text-xl font-semibold mt-4">Carwash</h3>
+                <p class="mt-2">Software de Gestión de Lavados de autos.</p>
+                <a href="javascript:void(0);" onclick="toggleDetails2()" id="toggleLink2"
+                    class="mt-4 block text-blue-400 hover:underline transition-all duration-300">Ver más</a>
+
+                <!-- Contenido adicional oculto -->
+                <div id="projectDetails2"
+                    class="hidden mt-4 text-white overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
+
+                    <p>CarwashApp es un software de gestión de Ingresos de Lavado de Vehiculos, sus principales
+                        funcionalidades son : :</p>
+                    <ul class="list-disc pl-5">
+                        <li>Gestor de Ingresos de Vehiculos</li>
+                        <li>Automatización de servicios</li>
+                        <li>Gestión de pagos flexible</li>
+                        <li>Interfaz pública</li>
+                        <li>Exportación a excel</li>
+                        <li>Firma Electrónica</li>
+                        <li>Desarrollado y alojado en la nube para un acceso rápido, fiable y sin complicaciones.</li>
+
+
+
+
+                    </ul>
+
+                </div>
+                <script>
+                    function toggleDetails2() {
+                        var details = document.getElementById('projectDetails2');
+                        var toggleLink = document.getElementById('toggleLink2');
+
+                        if (details.classList.contains('hidden')) {
+                            // Mostrar detalles con efecto de desvanecimiento y ampliación
+                            details.classList.remove('hidden');
+                            details.classList.add('block');
+                            details.classList.remove('opacity-0', 'max-h-0');
+                            details.classList.add('opacity-100', 'max-h-screen');
+
+
+                            // Cambiar texto del enlace
+                            toggleLink.textContent = 'Ver menos';
+                        } else {
+                            // Ocultar detalles con efecto de reducción y desvanecimiento suave
+                            details.classList.remove('opacity-100', 'max-h-screen');
+                            details.classList.add('opacity-0', 'max-h-0');
+
+                            // Cambiar texto del enlace
+                            toggleLink.textContent = 'Ver más';
+
+                            // Retirar la clase 'block' para ocultar completamente el contenido después de la animación
+                            setTimeout(function () {
+                                details.classList.remove('block');
+                                details.classList.add('hidden');
+                            }, 500); // La transición de desvanecimiento dura 500ms
+                        }
+                    }
+                </script>
+
+            </div>
+
+
+
+
+
+
+            <!-- Proyecto 4 -->
+            <div class="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl">
+                <!-- Video del proyecto -->
+                <video src="{% static 'videos/proyecto-video-jaime-retamal.mp4' %}" controls autoplay loop muted
+                    class="w-full h-56 object-cover rounded-lg">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+                <br>
+
+                <img src="{% static 'img/fichas-responsive (1).jpg' %}" alt="Vista del proyecto en formato móvil"
+                    class="w-32 h-auto object-cover rounded-lg mx-auto">
+                <h3 class="text-xl font-semibold mt-4">Fichas Clinicas</h3>
+                <p class="mt-2">Software de Gestión de fichas clinicas para un Doctor junto a un constructor y
+                    exportador de pdfs.</p>
+                <a href="javascript:void(0);" onclick="toggleDetails3()" id="toggleLink3"
+                    class="mt-4 block text-blue-400 hover:underline transition-all duration-300">Ver más</a>
+                <div id="projectDetails3"
+                    class="hidden mt-4 text-white overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
+
+                    <p>Fichas Clinicas App es un software de gestión de Fichas y Evoluciones clinicas para un Doctor,
+                        sus principales funcionalidades son :</p>
+                    <ul class="list-disc pl-5">
+                        <li>Gestor de Fichas Clinicas</li>
+                        <li>Gestor de Evoluciones Clinicas</li>
+                        <li>Constructor y Exportador de Pdfs de fichas clinicas</li>
+                        <li>Constructor y Exportador de Pdfs Informe medico complementario</li>
+                        <li>Constructor y Exportador de Pdfs Compin</li>
+
+
+
+
+
+                    </ul>
+
+                </div>
+                <script>
+                    function toggleDetails3() {
+                        var details = document.getElementById('projectDetails3');
+                        var toggleLink = document.getElementById('toggleLink3');
+
+                        if (details.classList.contains('hidden')) {
+                            // Mostrar detalles con efecto de desvanecimiento y ampliación
+                            details.classList.remove('hidden');
+                            details.classList.add('block');
+                            details.classList.remove('opacity-0', 'max-h-0');
+                            details.classList.add('opacity-100', 'max-h-screen');
+
+
+                            // Cambiar texto del enlace
+                            toggleLink.textContent = 'Ver menos';
+                        } else {
+                            // Ocultar detalles con efecto de reducción y desvanecimiento suave
+                            details.classList.remove('opacity-100', 'max-h-screen');
+                            details.classList.add('opacity-0', 'max-h-0');
+
+                            // Cambiar texto del enlace
+                            toggleLink.textContent = 'Ver más';
+
+                            // Retirar la clase 'block' para ocultar completamente el contenido después de la animación
+                            setTimeout(function () {
+                                details.classList.remove('block');
+                                details.classList.add('hidden');
+                            }, 500); // La transición de desvanecimiento dura 500ms
+                        }
+                    }
+                </script>
+            </div>
+            <div class="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl">
+                <!-- Contenedor para las imágenes -->
+                <div class="flex flex-col items-center gap-4">
+                    <!-- Imagen 1 -->
+                    <img src="{% static 'img/fenix-tienda.png' %}" alt="Proyecto 1 - Imagen 1"
+                        class="w-auto h-auto max-w-full rounded-lg">
+                    <!-- Imagen 2 -->
+                    <img src="{% static 'img/fenix-tienda2.png' %}" alt="Proyecto 1 - Imagen 2"
+                        class="w-auto h-auto max-w-full rounded-lg">
+                </div>
+                <h3 class="text-xl font-semibold mt-4">Tienda Online Fénix</h3>
+                <p class="mt-2">Tienda Online para Venta de Insumos Eléctricos.</p>
+                <a href="javascript:void(0);" onclick="toggleDetails4()" id="toggleLink4"
+                    class="mt-4 block text-blue-400 hover:underline transition-all duration-300">Ver más</a>
+                <div id="projectDetails4"
+                    class="hidden mt-4 text-white overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
+
+                    <p>Desarrollada en WordPress:</p>
+                    <ul class="list-disc pl-5">
+                        <li>
+                            <strong>Gestión de Productos Completa:</strong> Catálogo organizado de insumos eléctricos
+                            con categorías, descripciones detalladas, imágenes de alta calidad y precios actualizados.
+                        </li>
+                        <li>
+                            <strong>Carrito de Compras y Pago Seguro:</strong> Integración de un sistema de carrito
+                            intuitivo y múltiples pasarelas de pago, garantizando transacciones rápidas y seguras.
+                        </li>
+                        <li>
+                            <strong>Opciones de Envío Personalizadas:</strong> Configuración flexible de métodos de
+                            envío por región, peso o tipo de producto, optimizando la logística.
+                        </li>
+                        <li>
+                            <strong>Sistema de Inventario Automatizado:</strong> Seguimiento en tiempo real del stock
+                            para evitar ventas de productos agotados y facilitar la reposición.
+                        </li>
+                        <li>
+                            <strong>Interfaz Amigable y Adaptativa:</strong> Diseño responsivo que asegura una
+                            experiencia de compra fluida en dispositivos móviles, tablets y ordenadores.
+                        </li>
+                    </ul>
+
+
+                </div>
+                <script>
+                    function toggleDetails4() {
+                        var details = document.getElementById('projectDetails4');
+                        var toggleLink = document.getElementById('toggleLink4');
+
+                        if (details.classList.contains('hidden')) {
+                            // Mostrar detalles con efecto de desvanecimiento y ampliación
+                            details.classList.remove('hidden');
+                            details.classList.add('block');
+                            details.classList.remove('opacity-0', 'max-h-0');
+                            details.classList.add('opacity-100', 'max-h-screen');
+
+
+                            // Cambiar texto del enlace
+                            toggleLink.textContent = 'Ver menos';
+                        } else {
+                            // Ocultar detalles con efecto de reducción y desvanecimiento suave
+                            details.classList.remove('opacity-100', 'max-h-screen');
+                            details.classList.add('opacity-0', 'max-h-0');
+
+                            // Cambiar texto del enlace
+                            toggleLink.textContent = 'Ver más';
+
+                            // Retirar la clase 'block' para ocultar completamente el contenido después de la animación
+                            setTimeout(function () {
+                                details.classList.remove('block');
+                                details.classList.add('hidden');
+                            }, 500); // La transición de desvanecimiento dura 500ms
+                        }
+                    }
+                </script>
+            </div>
+
+
+
+
+        </div>
+    </section>
+</div>
+
+<!-- Sobre mí Section -->
+<section id="sobremiSection"
+    class="min-h-screen bg-gray-800 text-white flex flex-col justify-center items-center px-8 md:px-16 lg:px-32 py-12">
+    <!-- Título -->
+    <h2 class="text-3xl font-bold mb-6">Sobre mí</h2>
+
+    <!-- Contenido principal -->
+    <div class="flex flex-col md:flex-row items-center gap-8">
+        <!-- Imagen personal -->
+        <img src="{% static 'img/mifoto2.jpg' %}" alt="Foto de Andrés Luarte"
+            class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg border-4 border-[#5cf446]">
+
+        <!-- Texto descriptivo -->
+        <div class="text-center md:text-left">
+            <p class="text-lg">
+                ¡Hola! Soy <span class="font-bold text-[#5cf446]">Andrés Luarte</span>,
+                Ingeniero en Informática y Técnico en Telecomunicaciones
+                Me especializo en <span class="font-bold">Aplicaciones WEB y Aplicaciones IoT</span>.
+            </p>
+            <p class="mt-4 text-lg">
+            <p class="mt-4 text-lg">
+                Mis proyectos combinan creatividad y funcionalidad, desarrollando soluciones para diversos sectores
+                desde la
+                <span class="text-[#5cf446] font-bold">Agricultura</span> hasta la
+                <span class="text-[#60dcde] font-bold">Medicina</span>.
+            </p>
+
+            </p>
+            <p class="mt-4 text-lg">Entre mis habilidades principales se encuentran:</p>
+            <ul class="list-disc list-inside mt-2">
+                <li>Desarrollo de software y aplicaciones web con Django.</li>
+                <li>Integración de hardware IoT con ESP32 y sensores.</li>
+                <li>Diseño de interfaces intuitivas y funcionales.</li>
+                <li>Gestión de proyectos tecnológicos.</li>
+                <li>Desarrollo de tiendas online con WordPress y WooCommerce.</li>
+            </ul>
+
+
+
+
+            <p class="mt-4 text-lg">
+                Mi objetivo es que el usuario siempre quede satisfecho con e producto y pueda mejorarar cualquier
+                proceso en su negocio y agilizar tareas por medio de soluciones tecnologicas.
+                Siempre estoy en busca de nuevos desafíos y colaboraciones que impulsen la innovación para tu negocio o
+                empleo.
+            </p>
+
+        </div>
+
+        <p class="mt-4 text-lg">Entre mis habilidades técnicas principales se encuentran:</p>
+        <div class="relative mt-4">
+            <!-- Contenedor principal -->
+            <div id="carousel-container" class="flex overflow-x-auto gap-4 scrollbar-hide">
+                <!-- Logo Django -->
+                <div class="flex-shrink-0">
+                    <img src="{% static 'img/logo-django.png' %}" alt="Django"
+                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
+                </div>
+                <!-- Logo Python -->
+                <div class="flex-shrink-0">
+                    <img src="{% static 'img/logo-python2.png' %}" alt="Python"
+                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
+                </div>
+                <!-- Logo HTML -->
+                <div class="flex-shrink-0">
+                    <img src="{% static 'img/logo-html.png' %}" alt="HTML"
+                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
+                </div>
+                <div class="flex-shrink-0">
+                    <img src="{% static 'img/logo-javascript2-.png' %}" alt="HTML"
+                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
+                </div>
+                <div class="flex-shrink-0">
+                    <img src="{% static 'img/logo-postgresql.png' %}" alt="HTML"
+                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
+                </div>
+                <div class="flex-shrink-0">
+                    <img src="{% static 'img/logo-arduino-.png' %}" alt="HTML"
+                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
+                </div>
+                <div class="flex-shrink-0">
+                    <img src="{% static 'img/logo-esp32.png' %}" alt="HTML"
+                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
+                </div>
+                <!-- Logo JavaScript -->
+
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+            <!-- Controles -->
+            <button id="prev"
+                class="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-700 text-white rounded-full p-2 hover:bg-gray-600">
+                ◀
+            </button>
+            <button id="next"
+                class="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-700 text-white rounded-full p-2 hover:bg-gray-600">
+                ▶
+            </button>
+        </div>
+
+        <!-- JavaScript -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Seleccionar elementos del carrusel
+                const carousel = document.getElementById("carousel-container");
+                const prevButton = document.getElementById("prev");
+                const nextButton = document.getElementById("next");
+
+                // Configurar desplazamiento (ancho de las 3 imágenes)
+                const scrollAmount = carousel.clientWidth;
+
+                // Función para verificar los límites del carrusel
+                function updateButtons() {
+                    const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+                    prevButton.disabled = carousel.scrollLeft <= 0;
+                    nextButton.disabled = carousel.scrollLeft >= maxScrollLeft;
+                }
+
+                // Actualizar los botones cuando la página se carga
+                updateButtons();
+
+                prevButton.addEventListener("click", () => {
+                    carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+                    updateButtons(); // Actualizar el estado de los botones
+                });
+
+                nextButton.addEventListener("click", () => {
+                    carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
+                    updateButtons(); // Actualizar el estado de los botones
+                });
+
+                // Opcional: Actualizar los botones cuando el carrusel se desplace manualmente
+                carousel.addEventListener("scroll", updateButtons);
+            });
+
+
+        </script>
+
+        <!-- CSS para ocultar la barra de desplazamiento -->
+        <style>
+            #carousel-container {
+                width: calc(3 * 8rem);
+                /* Muestra 3 imágenes, cada una con 8rem de ancho (32px) */
+                overflow-x: hidden;
+                /* Oculta las imágenes fuera de este contenedor */
+            }
+
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        </style>
+
+
+
+</section>
+
+
+
+
+<style>
+    /* Estilo por defecto (oscuro) */
+    body {
+        background-color: #000;
+        color: #fff;
+    }
+
+    /* Estilo claro */
+    body.light-mode {
+        background-color: #fff;
+        color: #000;
+    }
+
+    /* Otros elementos opcionales */
+    body.light-mode a {
+        color: #007BFF;
+    }
+
+    body.light-mode .bg-gray-800 {
+        background-color: #f8f9fa !important;
+    }
+</style>
+
+
+<!-- Contacto Section -->
+<section id="contacto" class="min-h-screen bg-gray-900 text-white flex flex-col justify-center items-center py-12">
+    <h2 class="text-3xl font-bold mb-6" id="textcontacto">Contacto</h2>
+    <p class="mb-4" id="textconectate">¡Conéctate para colaborar en proyectos innovadores!</p>
+
+    <div class="mt-6 flex space-x-4">
+        <!-- Enlace de Gmail -->
+        <a href="mailto:andy.luarte@gmail.com" class="text-red-500 hover:text-red-600">
+            <i class="fa fa-envelope text-3xl"></i> Enviar un correo
+        </a>
+
+        <!-- Enlace de WhatsApp -->
+        <a href="https://wa.me/+56940933821" class="text-green-500 hover:text-green-600 flex items-center space-x-2">
+            <!-- Imagen de WhatsApp -->
+            <img src="{% static 'img/logo.wsp2.png' %}" alt="WhatsApp" class="w-8 h-8">
+            <span>Enviar mensaje por WhatsApp</span>
+        </a>
+
+    </div>
+</section>
+<script>
+    // Seleccionamos el botón, la sección y el logo
+    const toggleButton = document.getElementById('toggleTheme');
+    const themeSection = document.getElementById('themeSection');
+    const themeLogo = document.getElementById('themeLogo');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeech = document.getElementById('themeech');
+    const proyectosSection = document.getElementById('proyectosSection');
+    const proyectospalabra = document.getElementById('proyectospalabra');
+    const sobremisection = document.getElementById('sobremiSection')
+    const contactosection = document.getElementById('contacto')
+    const textcontacto = document.getElementById('textcontacto')
+    const textconectate = document.getElementById('textconectate')
+
+
+    // Evento para alternar entre temas
+    toggleButton.addEventListener('click', () => {
+        // Alternar clases en la sección para el tema
+        themeSection.classList.toggle('bg-black');
+        themeSection.classList.toggle('bg-white');
+        themeSection.classList.toggle('text-black');
+        themeSection.classList.toggle('text-white');
+
+
+        proyectosSection.classList.toggle('bg-gray-900');
+        proyectosSection.classList.toggle('bg-white');
+        proyectosSection.classList.toggle('bg-gray-900');
+        proyectosSection.classList.toggle('text-white');
+
+        sobremisection.classList.toggle('bg-gray-800');
+        sobremisection.classList.toggle('bg-white');
+        sobremisection.classList.toggle('text-white');
+        sobremisection.classList.toggle('text-black');
+
+        contactosection.classList.toggle('bg-gray-900');
+        contactosection.classList.toggle('bg-white');
+        contactosection.classList.toggle('text-white');
+        contactosection.classList.toggle('bg-gray-900');
+
+
+
+
+        // Cambiar el logo según el tema
+        if (themeSection.classList.contains('bg-white')) {
+            themeLogo.src = "{% static 'img/logo-claro.png' %}";
+            toggleButton.classList.remove('bg-gray-800', 'text-white');
+            toggleButton.classList.add('bg-gray-200', 'text-black');
+            themeech.classList.remove('text-white');
+            themeech.classList.add('text-black');
+            proyectospalabra.classList.remove('text-white');
+            proyectospalabra.classList.add('text-black')
+
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+
+            textcontacto.classList.remove('text-white')
+            textcontacto.classList.add('text-black')
+
+            textconectate.classList.remove('text-white')
+            textconectate.classList.add('text-black')
+
+        } else {
+            themeLogo.src = "{% static 'img/logo.png' %}";
+            toggleButton.classList.remove('bg-gray-200', 'text-black');
+            toggleButton.classList.add('bg-gray-800', 'text-white');
+            themeech.classList.remove('text-black');
+            themeech.classList.add('text-white');
+            proyectospalabra.classList.remove('text-black');
+            proyectospalabra.classList.add('text-white')
+
+            textcontacto.classList.remove('text-black');
+            textcontacto.classList.add('text-white')
+            textconectate.classList.remove('text-black');
+            textconectate.classList.add('text-white')
+
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+    });
+</script>
+
+{% endblock %}
