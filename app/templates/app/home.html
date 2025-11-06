@@ -20,7 +20,7 @@
     <!-- Content -->
     <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
         {% load static %}
-        <img id="themeLogo" src="{% static 'app/img/logo.png' %}" alt="LuarTech Logo" 
+        <img id="themeLogo" src="{% static 'img/logo.png' %}" alt="LuarTech Logo" 
              class="w-28 h-auto mb-12 mx-auto transform hover:scale-110 transition-all duration-500 hover:rotate-6">
 
         <h1 class="text-5xl md:text-7xl font-bold mb-6">
@@ -601,7 +601,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="relative">
                     <div class="relative z-10">
                         <img id="companyLogo" 
-                            src="{% static 'app/img/logo.png' %}" 
+                            src="{% static 'img/logo.png' %}" 
                             alt="LuarTech Innova" 
                             class="w-80 h-80 rounded-3xl object-contain shadow-2xl mx-auto">
 
@@ -729,31 +729,31 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="relative overflow-hidden">
                 <div class="flex gap-8 items-center justify-center flex-wrap">
                     <div class="tech-logo">
-                        <img src="{% static 'app/img/logo-django.png' %}" alt="Django" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{% static 'img/logo-django.png' %}" alt="Django" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                     <div class="tech-logo">
-                        <img src="{% static 'app/img/logo-python2.png' %}" alt="Python" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{% static 'img/logo-python2.png' %}" alt="Python" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                     <div class="tech-logo">
-                        <img src="{% static 'app/img/logo-html.png' %}" alt="HTML" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{% static 'img/logo-html.png' %}" alt="HTML" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                     <div class="tech-logo">
-                        <img src="{% static 'app/img/logo-javascript2-.png' %}" alt="JavaScript" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{% static 'img/logo-javascript2-.png' %}" alt="JavaScript" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                     <div class="tech-logo">
-                        <img src="{% static 'app/img/logo-postgresql.png' %}" alt="PostgreSQL" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{% static 'img/logo-postgresql.png' %}" alt="PostgreSQL" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                     <div class="tech-logo">
-                        <img src="{% static 'app/img/logo-arduino-.png' %}" alt="Arduino" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{% static 'img/logo-arduino-.png' %}" alt="Arduino" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                     <div class="tech-logo">
-                        <img src="{% static 'app/img/logo-esp32.png' %}" alt="ESP32" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{% static 'img/logo-esp32.png' %}" alt="ESP32" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                     <div class="tech-logo">
-                        <img src="{% static 'app/img/logo-wordpress.png' %}" alt="WordPress" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{% static 'img/logo-wordpress.png' %}" alt="WordPress" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                     <div class="tech-logo">
-                        <img src="{% static 'app/img/logo.woocoommerce.png' %}" alt="WooCommerce" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{% static 'img/logo.woocoommerce.png' %}" alt="WooCommerce" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                     <div class="tech-logo">
                         <img src="{% static 'img/aws.png' %}" alt="WooCommerce" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
@@ -902,7 +902,7 @@ if (themeToggle) {
                rel="noopener noreferrer"
                class="group contact-card-whatsapp p-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
                 <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <img src="{% static 'app/img/logo.wsp2.png' %}" alt="WhatsApp" class="w-10 h-10">
+                    <img src="{% static 'img/logo.wsp2.png' %}" alt="WhatsApp" class="w-10 h-10">
                 </div>
                 <h3 class="text-xl font-semibold mb-2 contact-card-title">WhatsApp</h3>
                 <p class="contact-card-text">+56 9 4093 3821</p>
@@ -1163,7 +1163,7 @@ toggleButton.addEventListener('click', () => {
             }
         });
     } else {
-        themeLogo.src = "{% static 'app/img/logo.png' %}";
+        themeLogo.src = "{% static 'img/logo.png' %}";
         toggleButton.classList.remove('bg-gray-900/10');
         toggleButton.classList.add('bg-white/10');
         themeIcon.classList.remove('fa-moon');
