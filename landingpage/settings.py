@@ -25,9 +25,10 @@ SECRET_KEY = 'django-insecure-yoxu&yk92ku%a5e(tr)fa5%xmysdiz^#!4eghp51ftlrf2%&r4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CSRF_TRUSTED_ORIGINS = ['https://luartech.cl', 'https://www.luartech.cl']
 
 ALLOWED_HOSTS = ['luartech.cl', 'www.luartech.cl']
-CSRF_TRUSTED_ORIGINS = ['https://luartech.cl.cl', 'https://www.luartech.cl.cl']
+
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
@@ -47,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -124,15 +126,16 @@ django_heroku.settings(locals())
 
 
 import os
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "app", "static","app"),
+    BASE_DIR / 'app' / 'static',  # donde están tus archivos de desarrollo
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
