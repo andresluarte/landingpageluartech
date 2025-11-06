@@ -2,647 +2,1320 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section id="themeSection" class="h-screen bg-black flex flex-col justify-center items-center text-white">
+<!-- Hero Section -->
+<!-- Hero Section -->
+<section id="themeSection" class="min-h-screen transition-all duration-500 bg-gradient-to-br from-gray-900 via-black to-gray-900 flex flex-col justify-center items-center relative overflow-hidden">
+    <!-- Theme Toggle Button -->
     <button id="toggleTheme"
-        class="fixed top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-md hover:bg-gray-700 transition">
-        <i id="themeIcon" class="fas fa-sun"></i> <!-- Icono de Sol por defecto -->
+        class="fixed top-6 right-6 z-50 bg-white/10 backdrop-blur-md text-white px-5 py-3 rounded-full shadow-lg hover:bg-white/20 transition-all duration-300 border border-white/20">
+        <i id="themeIcon" class="fas fa-moon text-lg"></i>
     </button>
 
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute w-96 h-96 bg-[#5cf446]/10 rounded-full blur-3xl -top-48 -left-48 animate-pulse"></div>
+        <div class="absolute w-96 h-96 bg-[#60dcde]/10 rounded-full blur-3xl -bottom-48 -right-48 animate-pulse" style="animation-delay: 1s;"></div>
+    </div>
 
-    <!-- Logo -->
-    {% load static %}
-    <img id="themeLogo" src="{% static 'app/img/logo.png' %}" alt="LuarTech Logo" class="w-32 h-auto mb-10">
+    <!-- Content -->
+    <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+        {% load static %}
+        <img id="themeLogo" src="{% static 'app/img/logo.png' %}" alt="LuarTech Logo" 
+             class="w-28 h-auto mb-12 mx-auto transform hover:scale-110 transition-all duration-500 hover:rotate-6">
 
+        <h1 class="text-5xl md:text-7xl font-bold mb-6">
+            <span class="block mb-2 transition-all duration-500 opacity-0" id="welcomeText" style="animation: fadeInUp 0.6s ease-out forwards;">
+                Bienvenido a
+            </span>
+            <span class="block mt-4 opacity-0" id="brandText" style="animation: fadeInUp 0.6s ease-out 0.3s forwards;">
+                <span class="font-extrabold tracking-tight relative inline-block brand-text-main">
+                    LuarTech
+                    <span class="brand-glow absolute inset-0 bg-gradient-to-r from-[#5cf446] via-[#60dcde] to-[#5cf446] opacity-20 blur-xl"></span>
+                </span>
+                <span class="ml-3 italic relative inline-block brand-text-innova" style="text-shadow: 0 0 20px rgba(92, 244, 70, 0.3);">
+                    Innova
+                </span>
+            </span>
+        </h1>
 
-    <!-- Título -->
-    <h1 class="text-5xl font-bold text-center md:text-6xl lg:text-7xl">
-        Bienvenido a
-        <span class="text-[#5cf446]">Lu<span class="text-[#60dcde]">art</span><span id="themeech"
-                class="text-white">ech</span></span>
+        <p class="text-xl md:text-2xl mb-12 font-light transition-colors duration-500" id="subtitle">
+            Transformando ideas en soluciones tecnológicas innovadoras
+        </p>
 
-        Innova
-    </h1>
+        <a href="#proyectos" id="exploreBtn"
+           class="inline-block font-semibold py-4 px-10 rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 transform hover:-translate-y-1">
+            Explorar Proyectos
+        </a>
+    </div>
 
-
-
-    <p class="mt-4 text-lg">Innovación y tecnología a tu alcance</p>
-    <a href="#proyectos" class="mt-6 bg-white text-black py-2 px-4 rounded-lg hover:bg-gray-100">Ver Proyectos</a>
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <i class="fas fa-chevron-down text-2xl transition-colors duration-500" id="scrollIcon"></i>
+    </div>
 </section>
-
-<div id="proyectos">
-
-    <!-- Proyectos Section -->
-    <section class="min-h-screen bg-gray-900 text-white p-10 " id="proyectosSection">
-        <h2 class=" text-3xl font-bold text-center " id="proyectospalabra">Proyectos</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-            <!-- Proyecto 1 -->
-
-            <div class="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl">
-                <!-- Video del proyecto -->
-                <video src="{% static 'app/videos/proyecto1_demo.mp4' %}" controls autoplay loop muted
-                    class="w-full h-56 object-cover rounded-lg">
-                    Tu navegador no soporta la reproducción de video.
-                </video>
-                <br>
-                <img src="{% static 'app/img/smartagro-responsive.jpg' %}" alt="Vista del proyecto en formato móvil"
-                    class="w-32 h-auto object-cover rounded-lg mx-auto">
-                <h3 class="text-xl font-semibold mt-4">SmartAgro-IoT</h3>
-                <p class="mt-2">Software de Gestión y Monitoreo Agrícola.</p>
-
-                <!-- Enlace para desplegar más información -->
-                <a href="javascript:void(0);" onclick="toggleDetails()" id="toggleLink"
-                    class="mt-4 block text-blue-400 hover:underline transition-all duration-300">Ver más</a>
-
-                <!-- Contenido adicional oculto -->
-                <div id="projectDetails"
-                    class="hidden mt-4 text-white overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
-
-                    <p>Smart Agro IoT es un software de gestión y monitoreo agrícola diseñado para agricultores y
-                        administradores del campo. Las principales funcionalidades son:</p>
-                    <ul class="list-disc pl-5">
-                        <li>Perfil para Multiples Usuarios</li>
-                        <li>Control de Sectores por geolocalización</li>
-                        <li>Gestión de Jornadas</li>
-                        <li>Control de Insumos y Maquinarias</li>
-                        <li>Gestor de Personal y Contratos</li>
-                        <li>Gestión Financiera Agrícola</li>
-                        <li>Monitoreo en Tiempo Real de Variables Climáticas de las Plantas (aire y suelo)</li>
-                        <li>Desarrollado y alojado en la nube para un acceso rápido, fiable y sin complicaciones.</li>
-                        <p>Sensores:</p>
-                        <ul class="list-disc pl-5">
-                            <li>Desarrollo y Prototipado de Avanzados Sensores</li>
-                            <li>Sensores funcionales como dispositivos de telemetría</li>
-
-                        </ul>
-
-
-                    </ul>
-
-                </div>
-            </div>
-
-            <!-- Script para alternar la visibilidad del contenido -->
-            <script>
-                function toggleDetails() {
-                    var details = document.getElementById('projectDetails');
-                    var toggleLink = document.getElementById('toggleLink');
-
-                    if (details.classList.contains('hidden')) {
-                        // Mostrar detalles con efecto de desvanecimiento y ampliación
-                        details.classList.remove('hidden');
-                        details.classList.add('block');
-                        details.classList.remove('opacity-0', 'max-h-0');
-                        details.classList.add('opacity-100', 'max-h-screen');
-
-                        // Cambiar texto del enlace
-                        toggleLink.textContent = 'Ver menos';
-                    } else {
-                        // Ocultar detalles con efecto de reducción y desvanecimiento suave
-                        details.classList.remove('opacity-100', 'max-h-screen');
-                        details.classList.add('opacity-0', 'max-h-0');
-
-                        // Cambiar texto del enlace
-                        toggleLink.textContent = 'Ver más';
-
-                        // Retirar la clase 'block' para ocultar completamente el contenido después de la animación
-                        setTimeout(function () {
-                            details.classList.remove('block');
-                            details.classList.add('hidden');
-                        }, 500); // La transición de desvanecimiento dura 500ms
-                    }
-                }
-            </script>
-
-
-
-
-
-            <!-- Proyecto 2 -->
-            <div class="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl">
-                <!-- Video principal del proyecto -->
-                <video src="{% static 'app/videos/proyecto-carwash.mp4' %}" controls autoplay loop muted
-                    class="w-full h-56 object-cover rounded-lg mb-4">
-                    Tu navegador no soporta la reproducción de video.
-                </video>
-                <br>
-                <!-- Imagen adicional para formato celular -->
-                <img src="{% static 'app/img/car-wash-responsive.jpg' %}" alt="Vista del proyecto en formato móvil"
-                    class="w-32 h-auto object-cover rounded-lg mx-auto">
-                <h3 class="text-xl font-semibold mt-4">Carwash</h3>
-                <p class="mt-2">Software de Gestión de Lavados de autos.</p>
-                <a href="javascript:void(0);" onclick="toggleDetails2()" id="toggleLink2"
-                    class="mt-4 block text-blue-400 hover:underline transition-all duration-300">Ver más</a>
-
-                <!-- Contenido adicional oculto -->
-                <div id="projectDetails2"
-                    class="hidden mt-4 text-white overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
-
-                    <p>CarwashApp es un software de gestión de Ingresos de Lavado de Vehiculos, sus principales
-                        funcionalidades son : :</p>
-                    <ul class="list-disc pl-5">
-                        <li>Gestor de Ingresos de Vehiculos</li>
-                        <li>Automatización de servicios</li>
-                        <li>Gestión de pagos flexible</li>
-                        <li>Interfaz pública</li>
-                        <li>Exportación a excel</li>
-                        <li>Firma Electrónica</li>
-                        <li>Desarrollado y alojado en la nube para un acceso rápido, fiable y sin complicaciones.</li>
-
-
-
-
-                    </ul>
-
-                </div>
-                <script>
-                    function toggleDetails2() {
-                        var details = document.getElementById('projectDetails2');
-                        var toggleLink = document.getElementById('toggleLink2');
-
-                        if (details.classList.contains('hidden')) {
-                            // Mostrar detalles con efecto de desvanecimiento y ampliación
-                            details.classList.remove('hidden');
-                            details.classList.add('block');
-                            details.classList.remove('opacity-0', 'max-h-0');
-                            details.classList.add('opacity-100', 'max-h-screen');
-
-
-                            // Cambiar texto del enlace
-                            toggleLink.textContent = 'Ver menos';
-                        } else {
-                            // Ocultar detalles con efecto de reducción y desvanecimiento suave
-                            details.classList.remove('opacity-100', 'max-h-screen');
-                            details.classList.add('opacity-0', 'max-h-0');
-
-                            // Cambiar texto del enlace
-                            toggleLink.textContent = 'Ver más';
-
-                            // Retirar la clase 'block' para ocultar completamente el contenido después de la animación
-                            setTimeout(function () {
-                                details.classList.remove('block');
-                                details.classList.add('hidden');
-                            }, 500); // La transición de desvanecimiento dura 500ms
-                        }
-                    }
-                </script>
-
-            </div>
-
-
-
-
-
-
-            <!-- Proyecto 4 -->
-            <div class="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl">
-                <!-- Video del proyecto -->
-                <video src="{% static 'app/videos/proyecto-video-jaime-retamal.mp4' %}" controls autoplay loop muted
-                    class="w-full h-56 object-cover rounded-lg">
-                    Tu navegador no soporta la reproducción de video.
-                </video>
-                <br>
-
-                <img src="{% static 'app/img/fichas-responsive (1).jpg' %}" alt="Vista del proyecto en formato móvil"
-                    class="w-32 h-auto object-cover rounded-lg mx-auto">
-                <h3 class="text-xl font-semibold mt-4">Fichas Clinicas</h3>
-                <p class="mt-2">Software de Gestión de fichas clinicas para un Doctor junto a un constructor y
-                    exportador de pdfs.</p>
-                <a href="javascript:void(0);" onclick="toggleDetails3()" id="toggleLink3"
-                    class="mt-4 block text-blue-400 hover:underline transition-all duration-300">Ver más</a>
-                <div id="projectDetails3"
-                    class="hidden mt-4 text-white overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
-
-                    <p>Fichas Clinicas App es un software de gestión de Fichas y Evoluciones clinicas para un Doctor,
-                        sus principales funcionalidades son :</p>
-                    <ul class="list-disc pl-5">
-                        <li>Gestor de Fichas Clinicas</li>
-                        <li>Gestor de Evoluciones Clinicas</li>
-                        <li>Constructor y Exportador de Pdfs de fichas clinicas</li>
-                        <li>Constructor y Exportador de Pdfs Informe medico complementario</li>
-                        <li>Constructor y Exportador de Pdfs Compin</li>
-
-
-
-
-
-                    </ul>
-
-                </div>
-                <script>
-                    function toggleDetails3() {
-                        var details = document.getElementById('projectDetails3');
-                        var toggleLink = document.getElementById('toggleLink3');
-
-                        if (details.classList.contains('hidden')) {
-                            // Mostrar detalles con efecto de desvanecimiento y ampliación
-                            details.classList.remove('hidden');
-                            details.classList.add('block');
-                            details.classList.remove('opacity-0', 'max-h-0');
-                            details.classList.add('opacity-100', 'max-h-screen');
-
-
-                            // Cambiar texto del enlace
-                            toggleLink.textContent = 'Ver menos';
-                        } else {
-                            // Ocultar detalles con efecto de reducción y desvanecimiento suave
-                            details.classList.remove('opacity-100', 'max-h-screen');
-                            details.classList.add('opacity-0', 'max-h-0');
-
-                            // Cambiar texto del enlace
-                            toggleLink.textContent = 'Ver más';
-
-                            // Retirar la clase 'block' para ocultar completamente el contenido después de la animación
-                            setTimeout(function () {
-                                details.classList.remove('block');
-                                details.classList.add('hidden');
-                            }, 500); // La transición de desvanecimiento dura 500ms
-                        }
-                    }
-                </script>
-            </div>
-            <div class="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl">
-                <!-- Contenedor para las imágenes -->
-                <div class="flex flex-col items-center gap-4">
-                    <!-- Imagen 1 -->
-                    <img src="{% static 'app/img/fenix-tienda.png' %}" alt="Proyecto 1 - Imagen 1"
-                        class="w-auto h-auto max-w-full rounded-lg">
-                    <!-- Imagen 2 -->
-                    <img src="{% static 'app/img/fenix-tienda2.png' %}" alt="Proyecto 1 - Imagen 2"
-                        class="w-auto h-auto max-w-full rounded-lg">
-                </div>
-                <h3 class="text-xl font-semibold mt-4">Tienda Online Fénix</h3>
-                <p class="mt-2">Tienda Online para Venta de Insumos Eléctricos.</p>
-                <a href="javascript:void(0);" onclick="toggleDetails4()" id="toggleLink4"
-                    class="mt-4 block text-blue-400 hover:underline transition-all duration-300">Ver más</a>
-                <div id="projectDetails4"
-                    class="hidden mt-4 text-white overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
-
-                    <p>Desarrollada en WordPress:</p>
-                    <ul class="list-disc pl-5">
-                        <li>
-                            <strong>Gestión de Productos Completa:</strong> Catálogo organizado de insumos eléctricos
-                            con categorías, descripciones detalladas, imágenes de alta calidad y precios actualizados.
-                        </li>
-                        <li>
-                            <strong>Carrito de Compras y Pago Seguro:</strong> Integración de un sistema de carrito
-                            intuitivo y múltiples pasarelas de pago, garantizando transacciones rápidas y seguras.
-                        </li>
-                        <li>
-                            <strong>Opciones de Envío Personalizadas:</strong> Configuración flexible de métodos de
-                            envío por región, peso o tipo de producto, optimizando la logística.
-                        </li>
-                        <li>
-                            <strong>Sistema de Inventario Automatizado:</strong> Seguimiento en tiempo real del stock
-                            para evitar ventas de productos agotados y facilitar la reposición.
-                        </li>
-                        <li>
-                            <strong>Interfaz Amigable y Adaptativa:</strong> Diseño responsivo que asegura una
-                            experiencia de compra fluida en dispositivos móviles, tablets y ordenadores.
-                        </li>
-                    </ul>
-
-
-                </div>
-                <script>
-                    function toggleDetails4() {
-                        var details = document.getElementById('projectDetails4');
-                        var toggleLink = document.getElementById('toggleLink4');
-
-                        if (details.classList.contains('hidden')) {
-                            // Mostrar detalles con efecto de desvanecimiento y ampliación
-                            details.classList.remove('hidden');
-                            details.classList.add('block');
-                            details.classList.remove('opacity-0', 'max-h-0');
-                            details.classList.add('opacity-100', 'max-h-screen');
-
-
-                            // Cambiar texto del enlace
-                            toggleLink.textContent = 'Ver menos';
-                        } else {
-                            // Ocultar detalles con efecto de reducción y desvanecimiento suave
-                            details.classList.remove('opacity-100', 'max-h-screen');
-                            details.classList.add('opacity-0', 'max-h-0');
-
-                            // Cambiar texto del enlace
-                            toggleLink.textContent = 'Ver más';
-
-                            // Retirar la clase 'block' para ocultar completamente el contenido después de la animación
-                            setTimeout(function () {
-                                details.classList.remove('block');
-                                details.classList.add('hidden');
-                            }, 500); // La transición de desvanecimiento dura 500ms
-                        }
-                    }
-                </script>
-            </div>
-
-
-
-
-        </div>
-    </section>
-</div>
-
-<!-- Sobre mí Section -->
-<section id="sobremiSection"
-    class="min-h-screen bg-gray-800 text-white flex flex-col justify-center items-center px-8 md:px-16 lg:px-32 py-12">
-    <!-- Título -->
-    <h2 class="text-3xl font-bold mb-6">Sobre mí</h2>
-
-    <!-- Contenido principal -->
-    <div class="flex flex-col md:flex-row items-center gap-8">
-        <!-- Imagen personal -->
-        <img src="{% static 'app/img/mifoto2.jpg' %}" alt="Foto de Andrés Luarte"
-            class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg border-4 border-[#5cf446]">
-
-        <!-- Texto descriptivo -->
-        <div class="text-center md:text-left">
-            <p class="text-lg">
-                ¡Hola! Soy <span class="font-bold text-[#5cf446]">Andrés Luarte</span>,
-                Ingeniero en Informática y Técnico en Telecomunicaciones
-                Me especializo en <span class="font-bold">Aplicaciones WEB y Aplicaciones IoT</span>.
-            </p>
-            <p class="mt-4 text-lg">
-            <p class="mt-4 text-lg">
-                Mis proyectos combinan creatividad y funcionalidad, desarrollando soluciones para diversos sectores
-                desde la
-                <span class="text-[#5cf446] font-bold">Agricultura</span> hasta la
-                <span class="text-[#60dcde] font-bold">Medicina</span>.
-            </p>
-
-            </p>
-            <p class="mt-4 text-lg">Entre mis habilidades principales se encuentran:</p>
-            <ul class="list-disc list-inside mt-2">
-                <li>Desarrollo de software y aplicaciones web con Django.</li>
-                <li>Integración de hardware IoT con ESP32 y sensores.</li>
-                <li>Diseño de interfaces intuitivas y funcionales.</li>
-                <li>Gestión de proyectos tecnológicos.</li>
-                <li>Desarrollo de tiendas online con WordPress y WooCommerce.</li>
-            </ul>
-
-
-
-
-            <p class="mt-4 text-lg">
-                Mi objetivo es que el usuario siempre quede satisfecho con e producto y pueda mejorarar cualquier
-                proceso en su negocio y agilizar tareas por medio de soluciones tecnologicas.
-                Siempre estoy en busca de nuevos desafíos y colaboraciones que impulsen la innovación para tu negocio o
-                empleo.
-            </p>
-
-        </div>
-
-        <p class="mt-4 text-lg">Entre mis habilidades técnicas principales se encuentran:</p>
-        <div class="relative mt-4">
-            <!-- Contenedor principal -->
-            <div id="carousel-container" class="flex overflow-x-auto gap-4 scrollbar-hide">
-                <!-- Logo Django -->
-                <div class="flex-shrink-0">
-                    <img src="{% static 'app/img/logo-django.png' %}" alt="Django"
-                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
-                </div>
-                <!-- Logo Python -->
-                <div class="flex-shrink-0">
-                    <img src="{% static 'app/img/logo-python2.png' %}" alt="Python"
-                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
-                </div>
-                <!-- Logo HTML -->
-                <div class="flex-shrink-0">
-                    <img src="{% static 'app/img/logo-html.png' %}" alt="HTML"
-                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
-                </div>
-                <div class="flex-shrink-0">
-                    <img src="{% static 'app/img/logo-javascript2-.png' %}" alt="HTML"
-                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
-                </div>
-                <div class="flex-shrink-0">
-                    <img src="{% static 'app/img/logo-postgresql.png' %}" alt="HTML"
-                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
-                </div>
-                <div class="flex-shrink-0">
-                    <img src="{% static 'app/img/logo-arduino-.png' %}" alt="HTML"
-                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
-                </div>
-                <div class="flex-shrink-0">
-                    <img src="{% static 'app/img/logo-esp32.png' %}" alt="HTML"
-                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
-                </div>
-                <div class="flex-shrink-0">
-                    <img src="{% static 'app/img/logo-wordpress.png' %}" alt="HTML"
-                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
-                </div>
-
-                <div class="flex-shrink-0">
-                    <img src="{% static 'app/img/logo.woocoommerce.png' %}" alt="HTML"
-                        class="w-32 h-32 rounded-full  shadow-lg border-1 border-[#5cf446]">
-                </div>
-                <!-- Logo JavaScript -->
-
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-
-
-            <!-- Controles -->
-            <button id="prev"
-                class="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-700 text-white rounded-full p-2 hover:bg-gray-600">
-                ◀
-            </button>
-            <button id="next"
-                class="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-700 text-white rounded-full p-2 hover:bg-gray-600">
-                ▶
-            </button>
-        </div>
-
-        <!-- JavaScript -->
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // Seleccionar elementos del carrusel
-                const carousel = document.getElementById("carousel-container");
-                const prevButton = document.getElementById("prev");
-                const nextButton = document.getElementById("next");
-
-                // Configurar desplazamiento (ancho de las 3 imágenes)
-                const scrollAmount = carousel.clientWidth;
-
-                // Función para verificar los límites del carrusel
-                function updateButtons() {
-                    const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-                    prevButton.disabled = carousel.scrollLeft <= 0;
-                    nextButton.disabled = carousel.scrollLeft >= maxScrollLeft;
-                }
-
-                // Actualizar los botones cuando la página se carga
-                updateButtons();
-
-                prevButton.addEventListener("click", () => {
-                    carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-                    updateButtons(); // Actualizar el estado de los botones
-                });
-
-                nextButton.addEventListener("click", () => {
-                    carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
-                    updateButtons(); // Actualizar el estado de los botones
-                });
-
-                // Opcional: Actualizar los botones cuando el carrusel se desplace manualmente
-                carousel.addEventListener("scroll", updateButtons);
-            });
-
-
-        </script>
-
-        <!-- CSS para ocultar la barra de desplazamiento -->
-        <style>
-            #carousel-container {
-                width: calc(3 * 8rem);
-                /* Muestra 3 imágenes, cada una con 8rem de ancho (32px) */
-                overflow-x: hidden;
-                /* Oculta las imágenes fuera de este contenedor */
-            }
-
-            .scrollbar-hide::-webkit-scrollbar {
-                display: none;
-            }
-
-            .scrollbar-hide {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-            }
-        </style>
-
-
-
-</section>
-
-
-
 
 <style>
-    /* Estilo por defecto (oscuro) */
-    body {
-        background-color: #000;
-        color: #fff;
+@keyframes fadeInUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+}
+/* Controlar el brillo de "LuarTech" según el tema */
+.light-mode .brand-glow {
+    opacity: 0 !important;
+}
+
+.dark-mode .brand-glow {
+    opacity: 0.2 !important;
+}
+
+.light-mode .brand-text-innova {
+    text-shadow: none !important;
+}
+
+.dark-mode .brand-text-innova {
+    text-shadow: 0 0 20px rgba(92, 244, 70, 0.3) !important;
+}
+/* Modo Oscuro (por defecto) */
+.dark-mode {
+    background: linear-gradient(to bottom right, #111827, #000000, #111827) !important;
+}
+
+.dark-mode #welcomeText {
+    color: #ffffff;
+    text-shadow: 0 0 30px rgba(92, 244, 70, 0.4);
+}
+
+.dark-mode #brandText {
+    color: #5cf446;
+    text-shadow: 0 0 40px rgba(92, 244, 70, 0.5);
+}
+
+.dark-mode #subtitle {
+    color: #d1d5db;
+}
+
+.dark-mode #scrollIcon {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-mode #exploreBtn {
+    background: linear-gradient(to right, #5cf446, #60dcde);
+    color: #000000;
+    box-shadow: 0 10px 40px rgba(92, 244, 70, 0.3);
+}
+
+.dark-mode #exploreBtn:hover {
+    box-shadow: 0 15px 50px rgba(92, 244, 70, 0.5);
+}
+
+.dark-mode #toggleTheme {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode #toggleTheme:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Modo Claro */
+.light-mode {
+    background: #ffffff !important;
+}
+
+.light-mode #welcomeText {
+    color: #1e293b;
+    text-shadow: 0 2px 10px rgba(30, 41, 59, 0.1);
+}
+
+.light-mode #brandText {
+    color: #059669;
+    text-shadow: 0 2px 15px rgba(5, 150, 105, 0.2);
+}
+
+.light-mode #subtitle {
+    color: #475569;
+}
+
+.light-mode #scrollIcon {
+    color: rgba(30, 41, 59, 0.5);
+}
+
+.light-mode #exploreBtn {
+    background: linear-gradient(to right, #059669, #0891b2);
+    color: #ffffff;
+    box-shadow: 0 10px 40px rgba(5, 150, 105, 0.3);
+}
+
+.light-mode #exploreBtn:hover {
+    box-shadow: 0 15px 50px rgba(5, 150, 105, 0.5);
+}
+
+.light-mode #toggleTheme {
+    background: rgba(0, 0, 0, 0.1);
+    color: #1e293b;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.light-mode #toggleTheme:hover {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.light-mode .absolute.w-96 {
+    opacity: 0.3;
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('toggleTheme');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeSection = document.getElementById('themeSection');
+    const themeLogo = document.getElementById('themeLogo');
+    const proyectosSection = document.getElementById('proyectos');
+    
+    // Estado inicial: modo oscuro
+    let isDarkMode = true;
+    themeSection.classList.add('dark-mode');
+    proyectosSection.classList.add('dark-mode');
+    
+    toggleBtn.addEventListener('click', function() {
+        isDarkMode = !isDarkMode;
+        
+        if (isDarkMode) {
+            // Cambiar a modo oscuro
+            document.body.classList.remove('light-mode');
+            themeSection.classList.remove('light-mode');
+            themeSection.classList.add('dark-mode');
+            proyectosSection.classList.remove('light-mode');
+            proyectosSection.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+            themeLogo.src = themeLogo.src.replace('logo-claro.png', 'logo.png');
+        } else {
+            // Cambiar a modo claro
+            document.body.classList.add('light-mode');
+            themeSection.classList.remove('dark-mode');
+            themeSection.classList.add('light-mode');
+            proyectosSection.classList.remove('dark-mode');
+            proyectosSection.classList.add('light-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeLogo.src = themeLogo.src.replace('logo.png', 'logo-claro.png');
+        }
+    });
+
+    // ====== FUNCIONALIDAD DEL CARRUSEL ======
+    let currentSlide = 0;
+    const track = document.getElementById('carouselTrack');
+    const slides = track.children;
+    const totalSlides = slides.length;
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updateCarousel() {
+        const offset = -currentSlide * 100;
+        track.style.transform = `translateX(${offset}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            if (index === currentSlide) {
+                dot.classList.remove('bg-gray-300');
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+                dot.classList.add('bg-gray-300');
+            }
+        });
     }
 
-    /* Estilo claro */
-    body.light-mode {
-        background-color: #fff;
-        color: #000;
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
     }
 
-    /* Otros elementos opcionales */
-    body.light-mode a {
-        color: #007BFF;
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
     }
 
-    body.light-mode .bg-gray-800 {
-        background-color: #f8f9fa !important;
+    // Event Listeners
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateCarousel();
+        });
+    });
+
+    // Auto-play carousel
+    let autoplayInterval = setInterval(nextSlide, 5000);
+
+    // Pause autoplay on hover
+    document.getElementById('projectCarousel').addEventListener('mouseenter', () => {
+        clearInterval(autoplayInterval);
+    });
+
+    document.getElementById('projectCarousel').addEventListener('mouseleave', () => {
+        autoplayInterval = setInterval(nextSlide, 5000);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+</script>
+
+<!-- Proyectos Section - Carousel -->
+<section id="proyectos" class="min-h-screen py-20 transition-all duration-500">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-bold mb-4 transition-colors duration-500" id="proyectospalabra">
+                Nuestros Proyectos
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-[#5cf446] to-[#60dcde] mx-auto mb-6"></div>
+            <p class="text-xl max-w-3xl mx-auto transition-colors duration-500" id="proyectossubtitle">
+                Soluciones tecnológicas personalizadas que impulsan el crecimiento y la eficiencia de nuestros clientes
+            </p>
+        </div>
+
+        <!-- Carousel Container -->
+        <div class="relative max-w-4xl mx-auto">
+            <div id="projectCarousel" class="overflow-hidden">
+                <div class="flex transition-transform duration-500 ease-in-out" id="carouselTrack">
+                    <!-- Project Card 1 -->
+                    <div class="w-full flex-shrink-0 px-4">
+                        <div class="card-proyecto rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="aspect-video relative overflow-hidden">
+                                <img src="{% static 'app/img/smartagro3.png' %}" 
+                                     alt="SmartAgro IoT" 
+                                     class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            </div>
+                            <div class="p-8">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-[#5cf446] to-[#60dcde] rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-leaf text-white text-xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold titulo-proyecto">SmartAgro IoT</h3>
+                                </div>
+                                <p class="text-lg mb-4 descripcion-proyecto">
+                                    Plataforma integral de gestión y monitoreo agrícola con IoT
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-4 py-2 bg-[#5cf446]/20 text-[#5cf446] rounded-full text-sm font-semibold">IoT</span>
+                                    <span class="px-4 py-2 bg-[#60dcde]/20 text-[#60dcde] rounded-full text-sm font-semibold">Agricultura</span>
+                                    <span class="px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold">Cloud</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="w-full flex-shrink-0 px-4">
+                        <div class="card-proyecto rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="aspect-video relative overflow-hidden">
+                                <img src="{% static 'app/img/carwash1.png' %}" 
+                                     alt="Carwash App" 
+                                     class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            </div>
+                            <div class="p-8">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-car text-white text-xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold titulo-proyecto">Carwash Manager</h3>
+                                </div>
+                                <p class="text-lg mb-4 descripcion-proyecto">
+                                    Sistema de gestión completo para servicios de lavado de vehículos
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold">Gestión</span>
+                                    <span class="px-4 py-2 bg-cyan-100 text-cyan-600 rounded-full text-sm font-semibold">Pagos</span>
+                                    <span class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm font-semibold">Web App</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full flex-shrink-0 px-4">
+                        <div class="card-proyecto rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="aspect-video relative overflow-hidden">
+                                <img src="{% static 'app/img/control-planner.png' %}" 
+                                    alt="Control Planner" 
+                                    class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            </div>
+                            <div class="p-8">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center">
+                                        <span class="text-white text-2xl">🏗️</span>
+                                    </div>
+                                    <h3 class="text-2xl font-bold titulo-proyecto">Control Planner</h3>
+                                </div>
+                                <p class="text-lg mb-4 descripcion-proyecto">
+                                    Plataforma integral para la planificación, control y seguimiento del progreso físico de obras de construcción.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-full text-sm font-semibold">Planificación</span>
+                                    <span class="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">Avance de Obra</span>
+                                    <span class="px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-semibold">Reportes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Project Card 3 -->
+                    <div class="w-full flex-shrink-0 px-4">
+                        <div class="card-proyecto rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="aspect-video relative overflow-hidden">
+                                <img src="{% static 'app/img/fichas_clinicas.png' %}" 
+                                     alt="Fichas Clínicas" 
+                                     class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            </div>
+                            <div class="p-8">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-heartbeat text-white text-xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold titulo-proyecto">Fichas Clínicas</h3>
+                                </div>
+                                <p class="text-lg mb-4 descripcion-proyecto">
+                                    Software médico con generación automática de documentos PDF
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-4 py-2 bg-red-100 text-red-600 rounded-full text-sm font-semibold">Salud</span>
+                                    <span class="px-4 py-2 bg-pink-100 text-pink-600 rounded-full text-sm font-semibold">PDF</span>
+                                    <span class="px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold">Cloud</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4 -->
+                    <div class="w-full flex-shrink-0 px-4">
+                        <div class="card-proyecto rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="aspect-video relative overflow-hidden">
+                                <img src="{% static 'app/img/fenix-tienda.png' %}" 
+                                     alt="Tienda Fénix" 
+                                     class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            </div>
+                            <div class="p-8">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-shopping-cart text-white text-xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold titulo-proyecto">Tienda Online Fénix</h3>
+                                </div>
+                                <p class="text-lg mb-4 descripcion-proyecto">
+                                    E-commerce especializado en insumos eléctricos
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold">E-commerce</span>
+                                    <span class="px-4 py-2 bg-yellow-100 text-yellow-600 rounded-full text-sm font-semibold">WordPress</span>
+                                    <span class="px-4 py-2 bg-green-100 text-green-600 rounded-full text-sm font-semibold">WooCommerce</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PLANTILLA PARA AGREGAR MÁS PROYECTOS: Copia desde aquí -->
+                    <!--
+                    <div class="w-full flex-shrink-0 px-4">
+                        <div class="card-proyecto rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="aspect-video relative overflow-hidden">
+                                <img src="{% static 'app/img/TU-IMAGEN.jpg' %}" 
+                                     alt="Nombre del Proyecto" 
+                                     class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            </div>
+                            <div class="p-8">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-[COLOR1] to-[COLOR2] rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-ICONO text-white text-xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold titulo-proyecto">Nombre del Proyecto</h3>
+                                </div>
+                                <p class="text-lg mb-4 descripcion-proyecto">
+                                    Descripción breve del proyecto
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold">Tag1</span>
+                                    <span class="px-4 py-2 bg-green-100 text-green-600 rounded-full text-sm font-semibold">Tag2</span>
+                                    <span class="px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold">Tag3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                    <!-- Hasta aquí -->
+
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button id="prevBtn" 
+                    class="btn-carrusel absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 rounded-full p-4 shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300">
+                <i class="fas fa-chevron-left text-xl"></i>
+            </button>
+            <button id="nextBtn" 
+                    class="btn-carrusel absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 rounded-full p-4 shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300">
+                <i class="fas fa-chevron-right text-xl"></i>
+            </button>
+
+            <!-- Carousel Indicators -->
+            <div class="flex justify-center gap-3 mt-8" id="carouselIndicators">
+                <button class="carousel-dot w-3 h-3 rounded-full transition-all duration-300"></button>
+                <button class="carousel-dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300"></button>
+                <button class="carousel-dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300"></button>
+                <button class="carousel-dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300"></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Estilos del carrusel que se adaptan al tema */
+
+/* Modo Oscuro */
+.dark-mode#proyectos {
+    background: linear-gradient(to bottom right, #0f172a, #1e293b) !important;
+}
+
+.dark-mode #proyectospalabra {
+    color: #ffffff;
+}
+
+.dark-mode #proyectossubtitle {
+    color: #d1d5db;
+}
+
+.dark-mode .card-proyecto {
+    background: linear-gradient(to bottom right, #1f2937, #111827);
+}
+
+.dark-mode .titulo-proyecto {
+    color: #ffffff;
+}
+
+.dark-mode .descripcion-proyecto {
+    color: #d1d5db;
+}
+
+.dark-mode .btn-carrusel {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    backdrop-filter: blur(10px);
+}
+
+.dark-mode .btn-carrusel:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .carousel-dot {
+    background: #4b5563;
+}
+
+.dark-mode .carousel-dot.active {
+    background: #5cf446;
+}
+
+/* Modo Claro */
+.light-mode#proyectos {
+    background: linear-gradient(to bottom right, #e5e7eb, #f3f4f6) !important;
+}
+
+.light-mode #proyectospalabra {
+    color: #1e293b;
+}
+
+.light-mode #proyectossubtitle {
+    color: #64748b;
+}
+
+.light-mode .card-proyecto {
+    background: linear-gradient(to bottom right, #ffffff, #f8fafc);
+    border: 1px solid #e2e8f0;
+}
+
+.light-mode .titulo-proyecto {
+    color: #1e293b;
+}
+
+.light-mode .descripcion-proyecto {
+    color: #475569;
+}
+
+.light-mode .btn-carrusel {
+    background: #ffffff;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+}
+
+.light-mode .btn-carrusel:hover {
+    background: #f1f5f9;
+}
+
+.light-mode .carousel-dot {
+    background: #cbd5e1;
+}
+
+.light-mode .carousel-dot.active {
+    background: #059669;
+}
+</style>
+<!-- Sobre Nosotros Section -->
+<section id="sobremiSection" class="min-h-screen transition-colors duration-300 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-bold mb-4 section-title">Sobre Nosotros</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-[#5cf446] to-[#60dcde] mx-auto mb-6"></div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+            <!-- Left Column - Image -->
+                <div class="relative">
+                    <div class="relative z-10">
+                        <img id="companyLogo" 
+                            src="{% static 'app/img/logo.png' %}" 
+                            alt="LuarTech Innova" 
+                            class="w-80 h-80 rounded-3xl object-contain shadow-2xl mx-auto">
+
+                    </div>
+                    <div class="absolute top-8 left-8 w-64 h-64 bg-gradient-to-br from-[#5cf446]/20 to-[#60dcde]/20 rounded-3xl -z-0"></div>
+                </div>
+
+            <!-- Right Column - Content -->
+            <div>
+                <h3 class="text-3xl font-bold mb-6 text-[#5cf446]">
+                    Excelencia en Desarrollo Tecnológico
+                </h3>
+                <p class="text-lg section-text mb-6 leading-relaxed">
+                    <span class="font-semibold section-highlight">LuarTech Innova</span> es una empresa especializada en el desarrollo de soluciones tecnológicas innovadoras. Contamos con un equipo de profesionales expertos en Ingeniería Informática y Telecomunicaciones.
+                </p>
+                <p class="text-lg section-text mb-6 leading-relaxed">
+                    Nos destacamos por crear aplicaciones web robustas, sistemas IoT personalizados y aplicaciones móviles que transforman procesos empresariales y optimizan operaciones en diversos sectores industriales.
+                </p>
+
+                <!-- Key Features -->
+                <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-[#5cf446]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-check text-[#5cf446]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-1 section-title">Soluciones Personalizadas</h4>
+                            <p class="text-sm section-text-muted">Adaptadas a cada negocio</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-[#60dcde]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-check text-[#60dcde]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-1 section-title">Tecnología de Vanguardia</h4>
+                            <p class="text-sm section-text-muted">Herramientas modernas</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-[#5cf446]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-check text-[#5cf446]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-1 section-title">Soporte Integral</h4>
+                            <p class="text-sm section-text-muted">Acompañamiento continuo</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-[#60dcde]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-check text-[#60dcde]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-1 section-title">Escalabilidad</h4>
+                            <p class="text-sm section-text-muted">Crece con tu negocio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <div class="mb-20">
+            <h3 class="text-3xl font-bold text-center mb-12 section-title">Nuestros Servicios</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Desarrollo Web -->
+                <div class="service-card rounded-2xl p-6 transition-all duration-300">
+                    <div class="w-14 h-14 bg-gradient-to-br from-[#5cf446] to-[#60dcde] rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3 section-title">Desarrollo Web</h4>
+                    <p class="section-text-muted">Aplicaciones web escalables con Django y tecnologías modernas</p>
+                </div>
+
+                <!-- Aplicaciones Móviles -->
+                <div class="service-card rounded-2xl p-6 transition-all duration-300">
+                    <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3 section-title">Aplicaciones Móviles</h4>
+                    <p class="section-text-muted">Apps nativas y multiplataforma para iOS y Android</p>
+                </div>
+
+                <!-- Soluciones IoT -->
+                <div class="service-card rounded-2xl p-6 transition-all duration-300">
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-microchip text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3 section-title">Soluciones IoT</h4>
+                    <p class="section-text-muted">Integración de hardware ESP32, Arduino sistemas de sensores avanzados</p>
+                </div>
+
+                <!-- E-Commerce -->
+                <div class="service-card rounded-2xl p-6 transition-all duration-300">
+                    <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-shopping-bag text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3 section-title">E-Commerce</h4>
+                    <p class="section-text-muted">Tiendas online con WordPress y WooCommerce optimizadas</p>
+                </div>
+
+                <!-- Gestión de Datos -->
+                <div class="service-card rounded-2xl p-6 transition-all duration-300">
+                    <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-database text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3 section-title">Gestión de Datos</h4>
+                    <p class="section-text-muted">Bases de datos PostgreSQL y sistemas de almacenamiento</p>
+                </div>
+
+                <!-- Análisis de Datos -->
+                <div class="service-card rounded-2xl p-6 transition-all duration-300">
+                    <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-bar text-white text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3 section-title">Análisis de Datos</h4>
+                    <p class="section-text-muted">Visualización, reportes y análisis avanzado con BI y Machine Learning</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div>
+            <h3 class="text-3xl font-bold text-center mb-12 section-title">Stack Tecnológico</h3>
+            <div class="relative overflow-hidden">
+                <div class="flex gap-8 items-center justify-center flex-wrap">
+                    <div class="tech-logo">
+                        <img src="{% static 'app/img/logo-django.png' %}" alt="Django" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="tech-logo">
+                        <img src="{% static 'app/img/logo-python2.png' %}" alt="Python" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="tech-logo">
+                        <img src="{% static 'app/img/logo-html.png' %}" alt="HTML" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="tech-logo">
+                        <img src="{% static 'app/img/logo-javascript2-.png' %}" alt="JavaScript" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="tech-logo">
+                        <img src="{% static 'app/img/logo-postgresql.png' %}" alt="PostgreSQL" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="tech-logo">
+                        <img src="{% static 'app/img/logo-arduino-.png' %}" alt="Arduino" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="tech-logo">
+                        <img src="{% static 'app/img/logo-esp32.png' %}" alt="ESP32" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="tech-logo">
+                        <img src="{% static 'app/img/logo-wordpress.png' %}" alt="WordPress" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="tech-logo">
+                        <img src="{% static 'app/img/logo.woocoommerce.png' %}" alt="WooCommerce" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="tech-logo">
+                        <img src="{% static 'app/img/logoaws.png' %}" alt="WooCommerce" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="tech-logo">
+                        <img src="{% static 'app/img/react.png' %}" alt="WooCommerce" class="w-20 h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Estilos para modo oscuro (por defecto) */
+#sobremiSection {
+    background: linear-gradient(to bottom right, #111827, #000000);
+    color: white;
+}
+
+#sobremiSection .section-title {
+    color: white;
+}
+
+#sobremiSection .section-text {
+    color: #d1d5db;
+}
+
+#sobremiSection .section-text-muted {
+    color: #9ca3af;
+}
+
+#sobremiSection .section-highlight {
+    color: white;
+}
+
+#sobremiSection .service-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#sobremiSection .service-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos para modo claro */
+body.light-mode #sobremiSection {
+    background: linear-gradient(to bottom right, #f3f4f6, #ffffff);
+    color: #111827;
+}
+
+body.light-mode #sobremiSection .section-title {
+    color: #111827;
+}
+
+body.light-mode #sobremiSection .section-text {
+    color: #374151;
+}
+
+body.light-mode #sobremiSection .section-text-muted {
+    color: #6b7280;
+}
+
+body.light-mode #sobremiSection .section-highlight {
+    color: #111827;
+}
+
+body.light-mode #sobremiSection .service-card {
+    background: rgba(0, 0, 0, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode #sobremiSection .service-card:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+</style>
+
+<script>
+// Función para cambiar el logo según el modo
+function updateLogoForTheme() {
+    const companyLogo = document.getElementById('companyLogo');
+    const isLightMode = document.body.classList.contains('light-mode');
+    
+    if (companyLogo) {
+        if (isLightMode) {
+            // Modo claro - usar logo oscuro
+            companyLogo.src = companyLogo.src.replace('logo.png', 'logo-claro.png');
+        } else {
+            // Modo oscuro - usar logo claro
+            companyLogo.src = companyLogo.src.replace('logo-claro.png', 'logo.png');
+        }
     }
+}
+
+// Ejecutar al cargar la página
+document.addEventListener('DOMContentLoaded', updateLogoForTheme);
+
+// Observar cambios en la clase del body para detectar cambio de tema
+const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        if (mutation.attributeName === 'class') {
+            updateLogoForTheme();
+        }
+    });
+});
+
+// Iniciar observación
+observer.observe(document.body, {
+    attributes: true
+});
+
+// También puedes agregar un listener si tienes un botón de cambio de tema
+const themeToggle = document.getElementById('theme-toggle'); // Ajusta el ID según tu botón
+if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+        setTimeout(updateLogoForTheme, 100); // Pequeño delay para asegurar que el cambio se complete
+    });
+}
+</script>
+
+<!-- Contacto Section -->
+<section id="contacto" class="min-h-screen flex flex-col justify-center items-center py-20 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-5xl font-bold mb-4 contact-title" id="textcontacto">Contacto</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-[#5cf446] to-[#60dcde] mx-auto mb-8"></div>
+        <p class="text-xl mb-12 contact-subtitle" id="textconectate">
+            No adaptamos tu negocio a la tecnología, adaptamos la tecnología a tu negocio.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            <!-- Email -->
+            <a href="mailto:contacto@luartech.cl" 
+               class="group contact-card-email p-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+                <div class="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <i class="fa fa-envelope text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 contact-card-title">Email</h3>
+                <p class="contact-card-text">contacto@luartech.cl</p>
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/+56940933821" 
+               target="_blank"
+               rel="noopener noreferrer"
+               class="group contact-card-whatsapp p-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+                <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <img src="{% static 'app/img/logo.wsp2.png' %}" alt="WhatsApp" class="w-10 h-10">
+                </div>
+                <h3 class="text-xl font-semibold mb-2 contact-card-title">WhatsApp</h3>
+                <p class="contact-card-text">+56 9 4093 3821</p>
+            </a>
+
+            <!-- LinkedIn -->
+
+
+            <!-- Teléfono -->
+            <a href="tel:+56940933821" 
+               class="group contact-card-phone p-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+                <div class="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <i class="fa fa-phone text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 contact-card-title">Teléfono</h3>
+                <p class="contact-card-text">+56 9 4093 3821</p>
+            </a>
+        </div>
+
+        <!-- CTA adicional -->
+        <div class="mt-12">
+            <p class="contact-cta-text text-lg mb-4">
+                Estamos listos para convertir tu visión en realidad
+            </p>
+            <div class="flex gap-4 justify-center">
+                <span class="contact-badge px-4 py-2 rounded-full text-sm font-semibold">
+                    <i class="fas fa-clock mr-2"></i>Respuesta en 24h
+                </span>
+                <span class="contact-badge px-4 py-2 rounded-full text-sm font-semibold">
+                    <i class="fas fa-shield-alt mr-2"></i>100% Confidencial
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* ===========================
+   MODO OSCURO (por defecto)
+   =========================== */
+#contacto {
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+}
+
+#contacto .contact-title {
+    color: #ffffff;
+}
+
+#contacto .contact-subtitle {
+    color: #d1d5db;
+}
+
+#contacto .contact-card-title {
+    color: #ffffff;
+}
+
+#contacto .contact-card-text {
+    color: #d1d5db;
+}
+
+#contacto .contact-cta-text {
+    color: #d1d5db;
+}
+
+#contacto .contact-badge {
+    background: rgba(92, 244, 70, 0.15);
+    color: #5cf446;
+    border: 1px solid rgba(92, 244, 70, 0.3);
+}
+
+/* Tarjetas de contacto - Modo Oscuro */
+#contacto .contact-card-email {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.1));
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+#contacto .contact-card-email:hover {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(220, 38, 38, 0.2));
+    border-color: rgba(239, 68, 68, 0.5);
+}
+
+#contacto .contact-card-whatsapp {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(22, 163, 74, 0.1));
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+#contacto .contact-card-whatsapp:hover {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(22, 163, 74, 0.2));
+    border-color: rgba(34, 197, 94, 0.5);
+}
+
+#contacto .contact-card-linkedin {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(29, 78, 216, 0.1));
+    border: 1px solid rgba(37, 99, 235, 0.3);
+}
+
+#contacto .contact-card-linkedin:hover {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.25), rgba(29, 78, 216, 0.2));
+    border-color: rgba(37, 99, 235, 0.5);
+}
+
+#contacto .contact-card-phone {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(147, 51, 234, 0.1));
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+#contacto .contact-card-phone:hover {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(147, 51, 234, 0.2));
+    border-color: rgba(168, 85, 247, 0.5);
+}
+
+/* ===========================
+   MODO CLARO
+   =========================== */
+body.light-mode #contacto {
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+}
+
+body.light-mode #contacto .contact-title {
+    color: #111827;
+}
+
+body.light-mode #contacto .contact-subtitle {
+    color: #4b5563;
+}
+
+body.light-mode #contacto .contact-card-title {
+    color: #111827;
+}
+
+body.light-mode #contacto .contact-card-text {
+    color: #6b7280;
+}
+
+body.light-mode #contacto .contact-cta-text {
+    color: #4b5563;
+}
+
+body.light-mode #contacto .contact-badge {
+    background: rgba(92, 244, 70, 0.1);
+    color: #16a34a;
+    border: 1px solid rgba(92, 244, 70, 0.3);
+}
+
+/* Tarjetas de contacto - Modo Claro */
+body.light-mode #contacto .contact-card-email {
+    background: linear-gradient(135deg, #fef2f2, #fee2e2);
+    border: 1px solid #fecaca;
+}
+
+body.light-mode #contacto .contact-card-email:hover {
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    border-color: #fca5a5;
+}
+
+body.light-mode #contacto .contact-card-whatsapp {
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 1px solid #bbf7d0;
+}
+
+body.light-mode #contacto .contact-card-whatsapp:hover {
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    border-color: #86efac;
+}
+
+body.light-mode #contacto .contact-card-linkedin {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border: 1px solid #bfdbfe;
+}
+
+body.light-mode #contacto .contact-card-linkedin:hover {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    border-color: #93c5fd;
+}
+
+body.light-mode #contacto .contact-card-phone {
+    background: linear-gradient(135deg, #faf5ff, #f3e8ff);
+    border: 1px solid #e9d5ff;
+}
+
+body.light-mode #contacto .contact-card-phone:hover {
+    background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+    border-color: #d8b4fe;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#contacto > div {
+    animation: fadeInUp 0.6s ease-out;
+}
+</style>
+
+<!-- JavaScript -->
+<script>
+// Theme Toggle
+
+const themeLogo = document.getElementById('themeLogo');
+const themeIcon = document.getElementById('themeIcon');
+const themeech = document.getElementById('themeech');
+const proyectosSection = document.getElementById('proyectos');
+const proyectospalabra = document.getElementById('proyectospalabra');
+const sobremisection = document.getElementById('sobremiSection');
+const contactosection = document.getElementById('contacto');
+const textcontacto = document.getElementById('textcontacto');
+const textconectate = document.getElementById('textconectate');
+
+toggleButton.addEventListener('click', () => {
+    // Toggle Hero Section
+    themeSection.classList.toggle('bg-gradient-to-br');
+    themeSection.classList.toggle('from-gray-900');
+    themeSection.classList.toggle('via-black');
+    themeSection.classList.toggle('to-gray-900');
+    themeSection.classList.toggle('bg-white');
+    
+    // Toggle Projects Section
+    proyectosSection.classList.toggle('bg-white');
+    proyectosSection.classList.toggle('bg-gray-900');
+    
+    // Toggle About Section
+    sobremisection.classList.toggle('bg-gradient-to-br');
+    sobremisection.classList.toggle('from-gray-900');
+    sobremisection.classList.toggle('to-black');
+    sobremisection.classList.toggle('bg-white');
+    
+    // Toggle Contact Section
+    contactosection.classList.toggle('bg-white');
+    contactosection.classList.toggle('bg-gray-900');
+
+    // Update text colors and logo
+    if (themeSection.classList.contains('bg-white')) {
+        themeLogo.src = "{% static 'app/img/logo-claro.png' %}";
+        toggleButton.classList.add('bg-gray-900/10');
+        toggleButton.classList.remove('bg-white/10');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        themeech.classList.add('text-black');
+        themeech.classList.remove('text-white');
+        proyectospalabra.classList.add('text-black');
+        proyectospalabra.classList.remove('text-white');
+        textcontacto.classList.add('text-black');
+        textcontacto.classList.remove('text-white');
+        textconectate.classList.add('text-gray-600');
+        textconectate.classList.remove('text-gray-300');
+        document.querySelectorAll('.text-white').forEach(el => {
+            if (!el.closest('#themeSection') && !el.closest('#sobremiSection')) {
+                el.classList.add('text-gray-900');
+                el.classList.remove('text-white');
+            }
+        });
+    } else {
+        themeLogo.src = "{% static 'app/img/logo.png' %}";
+        toggleButton.classList.remove('bg-gray-900/10');
+        toggleButton.classList.add('bg-white/10');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        themeech.classList.remove('text-black');
+        themeech.classList.add('text-white');
+        proyectospalabra.classList.remove('text-black');
+        proyectospalabra.classList.add('text-white');
+        textcontacto.classList.remove('text-black');
+        textcontacto.classList.add('text-white');
+        textconectate.classList.remove('text-gray-600');
+        textconectate.classList.add('text-gray-300');
+    }
+});
+
+// Carousel Functionality
+let currentSlide = 0;
+const track = document.getElementById('carouselTrack');
+const slides = track.children;
+const totalSlides = slides.length;
+const dots = document.querySelectorAll('.carousel-dot');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+function updateCarousel() {
+    const offset = -currentSlide * 100;
+    track.style.transform = `translateX(${offset}%)`;
+    
+    // Update dots
+    dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+            dot.classList.remove('bg-gray-300');
+            dot.classList.add('bg-gray-900');
+        } else {
+            dot.classList.remove('bg-gray-900');
+            dot.classList.add('bg-gray-300');
+        }
+    });
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateCarousel();
+}
+
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+}
+
+// Event Listeners
+nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
+
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentSlide = index;
+        updateCarousel();
+    });
+});
+
+// Auto-play carousel
+let autoplayInterval = setInterval(nextSlide, 5000);
+
+// Pause autoplay on hover
+document.getElementById('projectCarousel').addEventListener('mouseenter', () => {
+    clearInterval(autoplayInterval);
+});
+
+document.getElementById('projectCarousel').addEventListener('mouseleave', () => {
+    autoplayInterval = setInterval(nextSlide, 5000);
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+</script>
+
+<style>
+/* Additional Custom Styles */
+.tech-logo {
+    transition: transform 0.3s ease;
+}
+
+.tech-logo:hover {
+    transform: translateY(-8px);
+}
+
+/* Smooth transitions for theme switching */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Remove transition from carousel */
+#carouselTrack {
+    transition: transform 0.5s ease-in-out !important;
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.delay-1000 {
+    animation-delay: 1s;
+}
+
+/* Carousel dots hover effect */
+.carousel-dot {
+    cursor: pointer;
+}
+
+.carousel-dot:hover {
+    transform: scale(1.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .text-5xl {
+        font-size: 2.5rem;
+    }
+    
+    .text-7xl {
+        font-size: 3.5rem;
+    }
+    
+    .text-8xl {
+        font-size: 4rem;
+    }
+}
 </style>
 
 
-<!-- Contacto Section -->
-<section id="contacto" class="min-h-screen bg-gray-900 text-white flex flex-col justify-center items-center py-12">
-    <h2 class="text-3xl font-bold mb-6" id="textcontacto">Contacto</h2>
-    <p class="mb-4" id="textconectate">¡Conéctate para colaborar en proyectos innovadores!</p>
 
-    <div class="mt-6 flex space-x-4">
-        <!-- Enlace de Gmail -->
-        <a href="mailto:andy.luarte@gmail.com" class="text-red-500 hover:text-red-600">
-            <i class="fa fa-envelope text-3xl"></i> Enviar un correo
-        </a>
-
-        <!-- Enlace de WhatsApp -->
-        <a href="https://wa.me/+56940933821" class="text-green-500 hover:text-green-600 flex items-center space-x-2">
-            <!-- Imagen de WhatsApp -->
-            <img src="{% static 'app/img/logo.wsp2.png' %}" alt="WhatsApp" class="w-8 h-8">
-            <span>Enviar mensaje por WhatsApp</span>
-        </a>
-
-    </div>
-</section>
-<script>
-    // Seleccionamos el botón, la sección y el logo
-    const toggleButton = document.getElementById('toggleTheme');
-    const themeSection = document.getElementById('themeSection');
-    const themeLogo = document.getElementById('themeLogo');
-    const themeIcon = document.getElementById('themeIcon');
-    const themeech = document.getElementById('themeech');
-    const proyectosSection = document.getElementById('proyectosSection');
-    const proyectospalabra = document.getElementById('proyectospalabra');
-    const sobremisection = document.getElementById('sobremiSection')
-    const contactosection = document.getElementById('contacto')
-    const textcontacto = document.getElementById('textcontacto')
-    const textconectate = document.getElementById('textconectate')
-
-
-    // Evento para alternar entre temas
-    toggleButton.addEventListener('click', () => {
-        // Alternar clases en la sección para el tema
-        themeSection.classList.toggle('bg-black');
-        themeSection.classList.toggle('bg-white');
-        themeSection.classList.toggle('text-black');
-        themeSection.classList.toggle('text-white');
-
-
-        proyectosSection.classList.toggle('bg-gray-900');
-        proyectosSection.classList.toggle('bg-white');
-        proyectosSection.classList.toggle('bg-gray-900');
-        proyectosSection.classList.toggle('text-white');
-
-        sobremisection.classList.toggle('bg-gray-800');
-        sobremisection.classList.toggle('bg-white');
-        sobremisection.classList.toggle('text-white');
-        sobremisection.classList.toggle('text-black');
-
-        contactosection.classList.toggle('bg-gray-900');
-        contactosection.classList.toggle('bg-white');
-        contactosection.classList.toggle('text-white');
-        contactosection.classList.toggle('bg-gray-900');
-
-
-
-
-        // Cambiar el logo según el tema
-        if (themeSection.classList.contains('bg-white')) {
-            themeLogo.src = "{% static 'app/img/logo-claro.png' %}";
-            toggleButton.classList.remove('bg-gray-800', 'text-white');
-            toggleButton.classList.add('bg-gray-200', 'text-black');
-            themeech.classList.remove('text-white');
-            themeech.classList.add('text-black');
-            proyectospalabra.classList.remove('text-white');
-            proyectospalabra.classList.add('text-black')
-
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
-
-            textcontacto.classList.remove('text-white')
-            textcontacto.classList.add('text-black')
-
-            textconectate.classList.remove('text-white')
-            textconectate.classList.add('text-black')
-
-        } else {
-            themeLogo.src = "{% static 'app/img/logo.png' %}";
-            toggleButton.classList.remove('bg-gray-200', 'text-black');
-            toggleButton.classList.add('bg-gray-800', 'text-white');
-            themeech.classList.remove('text-black');
-            themeech.classList.add('text-white');
-            proyectospalabra.classList.remove('text-black');
-            proyectospalabra.classList.add('text-white')
-
-            textcontacto.classList.remove('text-black');
-            textcontacto.classList.add('text-white')
-            textconectate.classList.remove('text-black');
-            textconectate.classList.add('text-white')
-
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        }
-    });
-</script>
 
 {% endblock %}
